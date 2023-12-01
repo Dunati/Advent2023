@@ -124,7 +124,7 @@ public static class Runner
 
             CopyFiles(day);
 
-            GetInput(day, 2021, $"{DayPath(day)}/input1.txt").Wait();
+            GetInput(day, 2023, $"{DayPath(day)}/input1.txt").Wait();
         }
         else
         {
