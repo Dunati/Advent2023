@@ -48,6 +48,17 @@
         return str.Lines().Select(x => x.Select(x => x - '0').ToArray()).ToArray().To2DArray();
     }
 
+    public static int ToNumber(this char x)
+    {
+        return x.IsNumber()? (int)(x - '0') : 0;
+    }
+
+    public static bool IsNumber(this char x)
+    {
+        return x >= '0' && x <= '9';
+    }
+
+
 
     public static IEnumerable<int> ToInts(this string str, int @base = 10, string separator = "\r\n")
     {
