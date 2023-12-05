@@ -58,7 +58,14 @@
         return x >= '0' && x <= '9';
     }
 
-
+    public static IEnumerable<long> ToLongs(this string str, int @base = 10, string separator = "\r\n")
+    {
+        return str.Split(separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToLongs(@base, separator);
+    }
+    public static IEnumerable<long> ToLongs(this IEnumerable<string> str, int @base = 10, string separator = "\r\n")
+    {
+        return str.Select(x => Convert.ToInt64(x, @base));
+    }
 
     public static IEnumerable<int> ToInts(this string str, int @base = 10, string separator = "\r\n")
     {
