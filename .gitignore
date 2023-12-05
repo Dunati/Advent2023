@@ -9,3 +9,4 @@ obj/
 *.log
 /BenchmarkDotNet.Artifacts
 /Cookie.txt
+input*.txt
