@@ -56,8 +56,14 @@ class Day : BaseDay
     }
     public override string Run(int part, string rawData)
     {
+        if(part == 1)
+        return Part1(rawData);
 
+        return "";
+    }
 
+    private static string Part1(string rawData)
+    {
         List<Hand> hands = new List<Hand>();
         foreach (var line in rawData.Lines())
         {
