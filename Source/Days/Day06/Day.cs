@@ -12,23 +12,27 @@ class Day : BaseDay
         var (time, distance, rest) = rawData.Lines().Select(x => x.Replace(" ", "").Split(':', StringSplitOptions.RemoveEmptyEntries).Skip(1).ToLongs().ToArray()); ;
         Debug.Assert(time.Length == distance.Length);
 
-        long ways = 1;
-        for (int i = 0; i < time.Length; i++)
+            long ways = 1;
+        for (int b = 0; b < 100; b++)
         {
-            long t = time[i];
-            long d = distance[i];
-            long wins = 0;
-            for (int ms = 1; ms < t - 1; ms++)
+            ways = 1;
+            for (int i = 0; i < time.Length; i++)
             {
-                long end = ms * (t - ms);
-                if (end > d)
+                long t = time[i];
+                long d = distance[i];
+                long wins = 0;
+                for (int ms = 1; ms < t - 1; ms++)
                 {
-                    wins++;
+                    long end = ms * (t - ms);
+                    if (end > d)
+                    {
+                        wins++;
+                    }
                 }
-            }
-            if (wins > 0)
-            {
-                ways *= wins;
+                if (wins > 0)
+                {
+                    ways *= wins;
+                }
             }
         }
         return ways.ToString();
