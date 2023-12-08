@@ -52,18 +52,19 @@ class Day : BaseDay
                 }
             }
             allPaths.Add(steps);
-            var offset = new List<int>();
-            offset.Add(steps[0]);
-            for(int i = 1; i < steps.Count; i++)
+            var o = new List<int>();
+            o.Add(steps[0]);
+            for (int i = 1; i < steps.Count; i++)
             {
-                offset.Add(steps[i] - steps[i-1]);
+                o.Add(steps[i] - steps[i - 1]);
             }
-            offsets.Add(offset);
+            offsets.Add(o);
         }
 
-        var m = offsets.Select(x => (decimal)x.Last()).Aggregate((x, y) => x * y);
+        var m = offsets.Select(x => (x.FirstOrDefault()));
 
-        return m.ToString();
+
+        return Primes.LCM(m).ToString();
     }
     // 45528895583679359994704213 too high
     private static string Part1(string rawData)
